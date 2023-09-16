@@ -1,0 +1,8 @@
+page_number, offset = divmod(7000, 4096)
+
+if page_number in {0: 5, 1: 9, 2: 14}: frame_number = {0: 5, 1: 9, 2: 14}[page_number]
+ 
+physical_address = frame_number * 4096 + offset
+
+print(f"The physical address is {physical_address}")
+
