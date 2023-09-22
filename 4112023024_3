@@ -1,18 +1,24 @@
 import os
-
 os.mkdir('CS')
+
+file_name = os.path.join('CS', 'homework.txt')
+
 with open('homework.txt','w')as file:
     file.write('4112023024_楊長浤 \n')
-items = os.listdir('CS')
-for items in items:
-    print(items)
-    file = open('homework.txt','r')
+
+with open('homework.txt', 'r') as file:
+    file_content = file.read()
+    print()
     
-    file_size = os.path.getatime('homework.txt')
-    print(f'文件大小: {file_size}字節')
-     
-    if os.path.exists('homework.txt'):
-        os.remove('homework.txt')
-        
-    os.rmdir('CS')
+    file_info = os.stat('homework.txt')
+    print("檔案資訊:")
+    print(f"檔案大小: {file_info.st_size} bytes")
+    print(f"建立時間: {file_info.st_ctime}")
+    print(f"修改時間: {file_info.st_mtime}")
+    
+    os.remove('homework.txt')
+    print()
+    
+    os.rmdir('homework.txt')
+    print()
     
