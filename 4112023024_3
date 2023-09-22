@@ -1,0 +1,18 @@
+import os
+
+os.mkdir('CS')
+with open('homework.txt','w')as file:
+    file.write('4112023024_楊長浤 \n')
+items = os.listdir('CS')
+for items in items:
+    print(items)
+    file = open('homework.txt','r')
+    
+    file_size = os.path.getatime('homework.txt')
+    print(f'文件大小: {file_size}字節')
+     
+    if os.path.exists('homework.txt'):
+        os.remove('homework.txt')
+        
+    os.rmdir('CS')
+    
