@@ -1,0 +1,50 @@
+import socket
+
+server_ip = 'localhost'
+server_port = 3000
+
+server_socket = socket.socket()
+
+server_socket.bind((server_ip, server_port))
+
+server_socket.listen()
+print()
+
+client_socket, client_address = server_socket.accept()
+print()
+
+while True:
+    data = client_socket.recv().decode()
+    if not data:
+        break
+    print()
+
+    client_socket.send(data.encode())
+
+client_socket.close()
+server_socket.close()
+
+
+import socket
+
+server_ip = 'localhost'
+server_port = 3000
+
+client_socket = socket.socket()
+
+client_socket.connect((server_ip, server_port))
+print()
+
+while True:
+    message = input()
+
+    if message == 'exit':
+        break
+
+    client_socket.send(message.encode())
+
+    response = client_socket.recv().decode()
+    print()
+
+client_socket.close()
+
